@@ -24,7 +24,17 @@ export const TrackModule: FC = () => {
   }
 
   return (
-    <Box sx={{ p: 3, display: 'flex', justifyContent: 'center', flexDirection: 'column', height: '100vh' }}>
+    <Box
+      sx={{
+        p: 3,
+        backgroundColor: '#d2dbde',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        height: '100vh',
+      }}
+    >
       <Typography variant="h4" component="div" textAlign="center">
         Total: {total}
       </Typography>
@@ -33,9 +43,15 @@ export const TrackModule: FC = () => {
         {value}
       </Typography>
 
-      <Slider value={value} onChange={handleChange} max={25} color="secondary" sx={{ mt: 3, mb: 3 }} />
+      <Slider value={value} onChange={handleChange} max={25} color="secondary" sx={{ mt: 4, mb: 4 }} />
 
-      <Button variant="contained" color="primary" onClick={handleTrack} disabled={!value}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleTrack}
+        disabled={!value}
+        sx={{ borderRadius: '12px', minWidth: '140px' }}
+      >
         Track
       </Button>
     </Box>
