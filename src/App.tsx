@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import classes from './app.module.scss'
+import { CssBaseline, ThemeProvider } from '@mui/material'
+import { TrackModule } from './modules/track/module.tsx'
+import { theme } from './theme.ts'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className={classes.root}>
-      <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <TrackModule />
+    </ThemeProvider>
   )
 }
 
