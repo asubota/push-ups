@@ -9,6 +9,7 @@
     "build": "tsc && vite build",
     "deploy": "gh-pages -d dist",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/icon-512.png",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
+    "@vite-pwa/assets-generator": "^0.2.4",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.56.0",
@@ -34,6 +36,6 @@
     "sass": "^1.71.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.4",
-    "vite-plugin-pwa": "^0.19.1"
+    "vite-plugin-pwa": "^0.19.2"
   }
 }
