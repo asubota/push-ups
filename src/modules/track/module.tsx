@@ -27,7 +27,7 @@ export const TrackModule: FC = () => {
     <Box
       sx={{
         p: 3,
-        backgroundColor: '#d2dbde',
+        backgroundColor: '#fffcf3',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
