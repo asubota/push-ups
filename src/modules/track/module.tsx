@@ -39,7 +39,7 @@ export const TrackModule: FC = () => {
         Total: {total}
       </Typography>
 
-      <Typography variant="h5" component="div" textAlign="center">
+      <Typography variant="h5" component="div" textAlign="center" sx={{ mt: 3 }}>
         {value}
       </Typography>
 
