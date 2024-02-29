@@ -2,7 +2,7 @@
   "name": "push-ups",
   "homepage": "https://asubota.github.io/push-ups/",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
