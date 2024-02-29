@@ -15,9 +15,27 @@ export default defineConfig({
       manifest: {
         name: 'Push Ups',
         short_name: 'Push Ups',
-        description: 'Push Ups personal',
+        description: 'Push Ups Personal',
         theme_color: '#49f65d',
+        background_color: '#ff7474',
         display: 'standalone',
+        icons: [
+          {
+            src: '/icon-144.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: '/icon-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: '/icon-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
       },
     }),
   ],
