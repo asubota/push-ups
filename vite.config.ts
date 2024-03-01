@@ -58,10 +58,6 @@ export default defineConfig({
           },
         ],
       },
-
-      workbox: {
-        navigateFallback: '/index.html',
-      },
     }),
   ],
 })

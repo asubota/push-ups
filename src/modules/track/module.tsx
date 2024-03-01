@@ -43,17 +43,19 @@ export const TrackModule: FC = () => {
         {value}
       </Typography>
 
-      <Slider value={value} onChange={handleChange} max={25} color="secondary" sx={{ mt: 4, mb: 4 }} />
+      <Slider value={value} onChange={handleChange} max={30} color="secondary" sx={{ mt: 4, mb: 4 }} />
 
       <Button
         variant="contained"
         color="primary"
         onClick={handleTrack}
         disabled={!value}
-        sx={{ borderRadius: '12px', minWidth: '140px' }}
-      >
-        Track
-      </Button>
+        sx={{
+          borderRadius: '50%',
+          width: '120px',
+          height: '120px',
+        }}
+      />
     </Box>
   )
 }
