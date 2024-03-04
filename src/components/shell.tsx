@@ -14,8 +14,14 @@ import {
   Typography,
 } from '@mui/material'
 import { FitnessCenter, Menu, ChevronLeft, History, QueryStats } from '@mui/icons-material'
+import { Section } from '../types'
 
-export const Shell: FC<{ children: ReactNode }> = ({ children }) => {
+interface ShellProps {
+  children: ReactNode
+  onChange(section: Section): void
+}
+
+export const Shell: FC<ShellProps> = ({ children, onChange }) => {
   const [open, setOpen] = useState(false)
 
   const handleDrawerOpen = () => setOpen(true)
@@ -33,6 +39,9 @@ export const Shell: FC<{ children: ReactNode }> = ({ children }) => {
           </Typography>
         </Toolbar>
       </AppBar>
+
+      <Box sx={{ mt: '60px', p: 3 }}>{children}</Box>
+
       <Drawer onClose={handleDrawerClose} anchor="left" open={open}>
         <Box sx={{ display: 'flex', alignItems: 'center', minHeight: '56px' }}>
           <IconButton onClick={handleDrawerClose}>
@@ -41,7 +50,13 @@ export const Shell: FC<{ children: ReactNode }> = ({ children }) => {
         </Box>
         <Divider />
         <List sx={{ minWidth: '200px' }}>
-          <ListItem disablePadding>
+          <ListItem
+            disablePadding
+            onClick={() => {
+              onChange('track')
+              handleDrawerClose()
+            }}
+          >
             <ListItemButton>
               <ListItemIcon>
                 <FitnessCenter />
@@ -50,7 +65,13 @@ export const Shell: FC<{ children: ReactNode }> = ({ children }) => {
             </ListItemButton>
           </ListItem>
 
-          <ListItem disablePadding>
+          <ListItem
+            disablePadding
+            onClick={() => {
+              onChange('stats')
+              handleDrawerClose()
+            }}
+          >
             <ListItemButton>
               <ListItemIcon>
                 <QueryStats />
@@ -59,7 +80,13 @@ export const Shell: FC<{ children: ReactNode }> = ({ children }) => {
             </ListItemButton>
           </ListItem>
 
-          <ListItem disablePadding>
+          <ListItem
+            disablePadding
+            onClick={() => {
+              onChange('history')
+              handleDrawerClose()
+            }}
+          >
             <ListItemButton>
               <ListItemIcon>
                 <History />
@@ -69,8 +96,6 @@ export const Shell: FC<{ children: ReactNode }> = ({ children }) => {
           </ListItem>
         </List>
       </Drawer>
-
-      {children}
     </>
   )
 }

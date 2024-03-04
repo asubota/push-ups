@@ -28,13 +28,10 @@ export const TrackModule: FC = () => {
   return (
     <Box
       sx={{
-        p: 3,
-        backgroundColor: '#fffcf3',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        height: '100vh',
       }}
     >
       <Typography variant="h6" component="div" textAlign="left" alignSelf="flex-start" color="gray">
