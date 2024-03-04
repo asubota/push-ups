@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { TrackItem } from '../../types.ts'
 import { getSum, getTodayValues, loadData } from '../../utils.ts'
-import { Box, Card, CardContent, Stack, Typography } from '@mui/material'
+import { Box, Card, CardContent, Divider, Stack, Typography } from '@mui/material'
 
 interface BasicCardProps {
   title: string
@@ -61,7 +61,7 @@ const BasicCard: FC<BasicCardProps> = ({ title, value, extraInfo, max }) => {
   return (
     <Card>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
           {title}
         </Typography>
         <Typography
@@ -92,23 +92,30 @@ export const StatsModule: FC = () => {
   const byDay = getTotalByDay(history)
   const days = Object.keys(byDay)
   const dailyAverage = (total / days.length).toFixed(2)
-  const dayMax = Object.values(byDay).sort()[0]
+  const dayMax = Object.values(byDay)
+    .sort((a, b) => a - b)
+    .reverse()[0]
 
   return (
-    <Stack spacing={1}>
-      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1 }}>
-        <BasicCard title="Total" value={total} />
-        <BasicCard title="Today" value={today} />
-      </Box>
+    <>
+      <Stack spacing={1}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1 }}>
+          <BasicCard title="Total" value={total} />
+          <BasicCard title="Today" value={today} />
+        </Box>
 
-      <BasicCard title="Min" value={min.value} extraInfo={formatDate(min.timestamp)} />
-      <BasicCard title="Max" value={max.value} extraInfo={formatDate(max.timestamp)} />
+        <BasicCard title="Daily average" value={dailyAverage} />
+        <BasicCard title="Min" value={min.value} extraInfo={formatDate(min.timestamp)} />
+        <BasicCard title="Max" value={max.value} extraInfo={formatDate(max.timestamp)} />
+      </Stack>
 
-      <BasicCard title="Daily average" value={dailyAverage} />
+      <Divider sx={{ mt: 3, mb: 3 }} />
 
-      {Object.keys(byDay).map((key) => {
-        return <BasicCard key={key} title={key} value={byDay[key]} max={dayMax === byDay[key]} />
-      })}
-    </Stack>
+      <Stack spacing={1}>
+        {Object.keys(byDay).map((key) => {
+          return <BasicCard key={key} title={key} value={byDay[key]} max={dayMax === byDay[key]} />
+        })}
+      </Stack>
+    </>
   )
 }
