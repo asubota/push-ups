@@ -8,7 +8,7 @@ export const saveData = (data: TrackItem[]): void => {
 
 export const loadData = (): TrackItem[] => {
   const storedData = localStorage.getItem(KEY)
-  return storedData ? JSON.parse(storedData) : []
+  return storedData ? (JSON.parse(storedData) as TrackItem[]) : []
 }
 
 const today = new Date()
