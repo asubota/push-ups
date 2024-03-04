@@ -59,7 +59,7 @@ export const Shell: FC<ShellProps> = ({ children, onChange }) => {
           >
             <ListItemButton>
               <ListItemIcon>
-                <FitnessCenter />
+                <FitnessCenter color="secondary" />
               </ListItemIcon>
               <ListItemText primary="Track" />
             </ListItemButton>
@@ -74,7 +74,7 @@ export const Shell: FC<ShellProps> = ({ children, onChange }) => {
           >
             <ListItemButton>
               <ListItemIcon>
-                <QueryStats />
+                <QueryStats color="secondary" />
               </ListItemIcon>
               <ListItemText primary="Stats" />
             </ListItemButton>
@@ -89,7 +89,7 @@ export const Shell: FC<ShellProps> = ({ children, onChange }) => {
           >
             <ListItemButton>
               <ListItemIcon>
-                <History />
+                <History color="secondary" />
               </ListItemIcon>
               <ListItemText primary="History" />
             </ListItemButton>
