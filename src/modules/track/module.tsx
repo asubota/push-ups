@@ -46,9 +46,6 @@ export const TrackModule: FC = () => {
       </Typography>
 
       <Slider value={value} onChange={handleChange} max={60} color="secondary" sx={{ mt: 4, mb: 4 }} />
-      <Typography variant="h5" component="div" textAlign="center" color="gray">
-        {value}
-      </Typography>
 
       <Button
         variant="contained"
@@ -59,8 +56,11 @@ export const TrackModule: FC = () => {
           borderRadius: '50%',
           width: '120px',
           height: '120px',
+          fontSize: '32px',
         }}
-      />
+      >
+        {value}
+      </Button>
     </Box>
   )
 }
