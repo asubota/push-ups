@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { TrackItem } from '../../types.ts'
 import { getSum, getTodayValues, loadData } from '../../utils.ts'
-import { Card, CardContent, Stack, Typography } from '@mui/material'
+import { Box, Card, CardContent, Stack, Typography } from '@mui/material'
 
 interface BasicCardProps {
   title: string
@@ -60,11 +60,15 @@ export const StatsModule: FC = () => {
 
   return (
     <Stack spacing={2}>
-      <BasicCard title="Total" value={total} />
-      <BasicCard title="Today" value={today} />
-      <BasicCard title="Daily average" value={dailyAverage} />
+      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
+        <BasicCard title="Total" value={total} />
+        <BasicCard title="Today" value={today} />
+      </Box>
+
       <BasicCard title="Min" value={min.value} extraInfo={formatDate(min.timestamp)} />
       <BasicCard title="Max" value={max.value} extraInfo={formatDate(max.timestamp)} />
+
+      <BasicCard title="Daily average" value={dailyAverage} />
     </Stack>
   )
 }
