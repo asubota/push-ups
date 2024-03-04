@@ -1,7 +1,9 @@
 import { FC, useState } from 'react'
-import { Box, Button, Slider, Typography } from '@mui/material'
+import { Box, Button, IconButton, Slider, Stack, Typography } from '@mui/material'
 import { getSum, getTodayValues, loadData, saveData } from './utils'
 import { TrackItem } from './types'
+import AddCircleIcon from '@mui/icons-material/AddCircle'
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle'
 
 export const TrackModule: FC = () => {
   const [history, setHistory] = useState<TrackItem[]>(loadData())
@@ -58,6 +60,15 @@ export const TrackModule: FC = () => {
       >
         {value}
       </Button>
+
+      <Stack direction="row" gap={4}>
+        <IconButton color="secondary" sx={{ fontSize: '60px' }} onClick={() => setValue((v) => v - 1)}>
+          <RemoveCircleIcon fontSize="inherit" />
+        </IconButton>
+        <IconButton color="secondary" sx={{ fontSize: '60px' }} onClick={() => setValue((v) => v + 1)}>
+          <AddCircleIcon fontSize="inherit" />
+        </IconButton>
+      </Stack>
     </Box>
   )
 }
