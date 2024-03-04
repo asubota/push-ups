@@ -45,7 +45,7 @@ export const TrackModule: FC = () => {
         Today: {today}
       </Typography>
 
-      <Slider value={value} onChange={handleChange} max={30} color="secondary" sx={{ mt: 4, mb: 4 }} />
+      <Slider value={value} onChange={handleChange} max={60} color="secondary" sx={{ mt: 4, mb: 4 }} />
       <Typography variant="h5" component="div" textAlign="center" color="gray">
         {value}
       </Typography>
