@@ -37,7 +37,7 @@ export const TrackModule: FC = () => {
     >
       <Typography variant="h4" component="div" textAlign="center">
         Today
-        <Divider />
+        <Divider sx={{ borderColor: 'secondary.main' }} />
         {today}
       </Typography>
 

@@ -2,6 +2,7 @@ import { FC, useState } from 'react'
 import { TrackItem } from '../../types.ts'
 import { getSum, getTodayValues, loadData } from '../../utils.ts'
 import { Box, Card, CardContent, Divider, Stack, Typography } from '@mui/material'
+import ScheduleIcon from '@mui/icons-material/Schedule'
 
 interface BasicCardProps {
   title: string
@@ -87,7 +88,7 @@ const BasicCard: FC<BasicCardProps> = ({ title, value, extraInfo, max }) => {
 export const StatsModule: FC = () => {
   const [history] = useState<TrackItem[]>(() => loadData())
   const total = getSum(history)
-  const { min, max } = findLowestAndHighest(history)
+  const { max } = findLowestAndHighest(history)
   const today = getSum(getTodayValues(history))
   const byDay = getTotalByDay(history)
   const days = Object.keys(byDay)
@@ -99,17 +100,19 @@ export const StatsModule: FC = () => {
   return (
     <>
       <Stack spacing={1}>
-        <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1 }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 1 }}>
           <BasicCard title="Total" value={total} />
+          <BasicCard title="Daily Max" value={dayMax} />
           <BasicCard title="Today" value={today} />
         </Box>
 
         <BasicCard title="Daily average" value={dailyAverage} />
-        <BasicCard title="Min" value={min.value} extraInfo={formatDate(min.timestamp)} />
         <BasicCard title="Max" value={max.value} extraInfo={formatDate(max.timestamp)} />
       </Stack>
 
-      <Divider sx={{ mt: 3, mb: 3 }} />
+      <Divider sx={{ mt: 1, mb: 1 }}>
+        <ScheduleIcon color="secondary" />
+      </Divider>
 
       <Stack spacing={1}>
         {Object.keys(byDay).map((key) => {
