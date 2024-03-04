@@ -1,12 +1,15 @@
 import { CssBaseline, ThemeProvider } from '@mui/material'
-import { TrackModule } from './modules/track/module.tsx'
-import { theme } from './theme.ts'
+import { theme } from './theme'
+import { Shell } from './components/shell'
+import { TrackModule } from './modules/track/module'
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <TrackModule />
+      <Shell>
+        <TrackModule />
+      </Shell>
     </ThemeProvider>
   )
 }

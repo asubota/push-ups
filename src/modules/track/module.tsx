@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { Box, Button, Slider, Typography } from '@mui/material'
-import { getSum, getTodayValues, loadData, saveData } from './utils.ts'
-import { TrackItem } from './types.ts'
+import { getSum, getTodayValues, loadData, saveData } from './utils'
+import { TrackItem } from './types'
 
 export const TrackModule: FC = () => {
   const [history, setHistory] = useState<TrackItem[]>(loadData())
