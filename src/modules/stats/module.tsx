@@ -7,6 +7,7 @@ interface BasicCardProps {
   title: string
   value: number | string
   extraInfo?: string
+  max?: boolean
 }
 
 const findLowestAndHighest = (items: TrackItem[]) => {
@@ -30,14 +31,46 @@ const formatDate = (timestamp: number): string => {
   return `${hours}:${minutes} ${day} ${month}, ${year}`
 }
 
-const BasicCard: FC<BasicCardProps> = ({ title, value, extraInfo }) => {
+const getTotalByDay = (items: TrackItem[]): Record<string, number> => {
+  const byDay: Record<string, TrackItem[]> = {}
+
+  items.forEach((record) => {
+    const date = new Date(record.timestamp)
+    const day = date.getDate()
+    const month = date.toLocaleString('default', { month: 'short' })
+    const year = date.getFullYear()
+    const dayKey = `${day} ${month}, ${year}`
+
+    if (!byDay[dayKey]) {
+      byDay[dayKey] = []
+    }
+
+    byDay[dayKey].push(record)
+  })
+
+  const data: Record<string, number> = {}
+
+  Object.keys(byDay).forEach((key) => {
+    data[key] = getSum(byDay[key])
+  })
+
+  return data
+}
+
+const BasicCard: FC<BasicCardProps> = ({ title, value, extraInfo, max }) => {
   return (
     <Card>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {title}
         </Typography>
-        <Typography variant="h5" component="div">
+        <Typography
+          variant="h5"
+          component="div"
+          sx={{
+            ...(max && { color: 'secondary.main' }),
+          }}
+        >
           {value}
 
           {extraInfo && (
@@ -54,13 +87,16 @@ const BasicCard: FC<BasicCardProps> = ({ title, value, extraInfo }) => {
 export const StatsModule: FC = () => {
   const [history] = useState<TrackItem[]>(() => loadData())
   const total = getSum(history)
-  const dailyAverage = (total / history.length).toFixed(2)
   const { min, max } = findLowestAndHighest(history)
   const today = getSum(getTodayValues(history))
+  const byDay = getTotalByDay(history)
+  const days = Object.keys(byDay)
+  const dailyAverage = (total / days.length).toFixed(2)
+  const dayMax = Object.values(byDay).sort()[0]
 
   return (
-    <Stack spacing={2}>
-      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
+    <Stack spacing={1}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1 }}>
         <BasicCard title="Total" value={total} />
         <BasicCard title="Today" value={today} />
       </Box>
@@ -69,6 +105,10 @@ export const StatsModule: FC = () => {
       <BasicCard title="Max" value={max.value} extraInfo={formatDate(max.timestamp)} />
 
       <BasicCard title="Daily average" value={dailyAverage} />
+
+      {Object.keys(byDay).map((key) => {
+        return <BasicCard key={key} title={key} value={byDay[key]} max={dayMax === byDay[key]} />
+      })}
     </Stack>
   )
 }
