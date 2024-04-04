@@ -9,7 +9,6 @@
     "build": "tsc && vite build",
     "deploy": "gh-pages -d dist",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/icon-512.png",
     "preview": "vite preview"
   },
   "dependencies": {
