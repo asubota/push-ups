@@ -8,6 +8,16 @@ const base = '/push-ups'
 // https://vitejs.dev/config/
 export default defineConfig({
   base,
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          mui: ['@mui/material'],
+        },
+      },
+    },
+  },
   plugins: [
     react(),
     basicSsl(),
