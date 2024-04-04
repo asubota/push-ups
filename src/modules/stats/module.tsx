@@ -115,9 +115,12 @@ export const StatsModule: FC = () => {
       </Divider>
 
       <Stack spacing={1}>
-        {Object.keys(byDay).map((key) => {
-          return <BasicCard key={key} title={key} value={byDay[key]} max={dayMax === byDay[key]} />
-        })}
+        {Object.keys(byDay)
+          .reverse()
+          .map((key) => {
+            console.log(key)
+            return <BasicCard key={key} title={key} value={byDay[key]} max={dayMax === byDay[key]} />
+          })}
       </Stack>
     </>
   )
