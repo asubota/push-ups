@@ -118,7 +118,6 @@ export const StatsModule: FC = () => {
         {Object.keys(byDay)
           .reverse()
           .map((key) => {
-            console.log(key)
             return <BasicCard key={key} title={key} value={byDay[key]} max={dayMax === byDay[key]} />
           })}
       </Stack>
