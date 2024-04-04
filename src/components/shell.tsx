@@ -13,7 +13,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
-import { FitnessCenter, Menu, ChevronLeft, History, QueryStats } from '@mui/icons-material'
+import { FitnessCenter, Menu, ChevronLeft, CalendarMonth, QueryStats } from '@mui/icons-material'
 import { Section } from '../types'
 
 interface ShellProps {
@@ -83,15 +83,15 @@ export const Shell: FC<ShellProps> = ({ children, onChange }) => {
           <ListItem
             disablePadding
             onClick={() => {
-              onChange('history')
+              onChange('calendar')
               handleDrawerClose()
             }}
           >
             <ListItemButton>
               <ListItemIcon>
-                <History color="secondary" />
+                <CalendarMonth color="secondary" />
               </ListItemIcon>
-              <ListItemText primary="History" />
+              <ListItemText primary="Calendar" />
             </ListItemButton>
           </ListItem>
         </List>
