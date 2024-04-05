@@ -11,7 +11,12 @@ interface BasicCardProps {
   max?: boolean
 }
 
-const findLowestAndHighest = (items: TrackItem[]) => {
+const findLowestAndHighest = (
+  items: TrackItem[],
+): {
+  min?: TrackItem
+  max?: TrackItem
+} => {
   const sortedData = items.slice().sort((a, b) => a.value - b.value)
 
   const min = sortedData[0]
@@ -92,7 +97,8 @@ export const StatsModule: FC = () => {
   const today = getSum(getTodayValues(history))
   const byDay = getTotalByDay(history)
   const days = Object.keys(byDay)
-  const dailyAverage = (total / days.length).toFixed(2)
+  const dailyAverage = total ? (total / days.length).toFixed(2) : 0
+
   const dayMax = Object.values(byDay)
     .sort((a, b) => a - b)
     .reverse()[0]
@@ -107,7 +113,7 @@ export const StatsModule: FC = () => {
         </Box>
 
         <BasicCard title="Daily average" value={dailyAverage} />
-        <BasicCard title="Max" value={max.value} extraInfo={formatDate(max.timestamp)} />
+        <BasicCard title="Max" value={max ? max.value : 0} extraInfo={max ? formatDate(max.timestamp) : ''} />
       </Stack>
 
       <Divider sx={{ mt: 1, mb: 1 }}>
