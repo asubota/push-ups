@@ -35,8 +35,8 @@ export default defineConfig({
         name: 'Push Ups',
         short_name: 'Push Ups',
         description: 'Push Ups Personal',
-        theme_color: '#b73a72',
-        background_color: '#35a67e',
+        theme_color: '#17191d',
+        background_color: '#17191d',
         display: 'standalone',
         screenshots: [
           {

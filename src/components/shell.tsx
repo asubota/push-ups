@@ -13,7 +13,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material'
-import { FitnessCenter, Menu, ChevronLeft, QueryStats } from '@mui/icons-material'
+import { MenuIcon, ChevronLeftIcon, TrackIcon, StatsIcon } from './icons'
 import { Section } from '../types'
 
 interface ShellProps {
@@ -32,7 +32,7 @@ export const Shell: FC<ShellProps> = ({ children, onChange }) => {
       <AppBar position="fixed">
         <Toolbar>
           <IconButton color="inherit" onClick={handleDrawerOpen} edge="start">
-            <Menu />
+            <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" sx={{ ml: 'auto' }}>
             Push Ups
@@ -45,7 +45,7 @@ export const Shell: FC<ShellProps> = ({ children, onChange }) => {
       <Drawer onClose={handleDrawerClose} anchor="left" open={open}>
         <Box sx={{ display: 'flex', alignItems: 'center', minHeight: '56px' }}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeft />
+            <ChevronLeftIcon />
           </IconButton>
         </Box>
         <Divider />
@@ -59,7 +59,7 @@ export const Shell: FC<ShellProps> = ({ children, onChange }) => {
           >
             <ListItemButton>
               <ListItemIcon>
-                <FitnessCenter color="secondary" />
+                <TrackIcon color="secondary" />
               </ListItemIcon>
               <ListItemText primary="Track" />
             </ListItemButton>
@@ -74,7 +74,7 @@ export const Shell: FC<ShellProps> = ({ children, onChange }) => {
           >
             <ListItemButton>
               <ListItemIcon>
-                <QueryStats color="secondary" />
+                <StatsIcon color="secondary" />
               </ListItemIcon>
               <ListItemText primary="Stats" />
             </ListItemButton>

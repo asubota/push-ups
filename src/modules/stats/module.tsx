@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { TrackItem } from '../../types.ts'
 import { getSum, getTodayValues, loadData } from '../../utils.ts'
 import { Box, Card, CardContent, Divider, Stack, Typography } from '@mui/material'
-import ScheduleIcon from '@mui/icons-material/Schedule'
+import { HistoryIcon } from '../../components/icons.tsx'
 
 interface BasicCardProps {
   title: string
@@ -67,20 +67,36 @@ const BasicCard: FC<BasicCardProps> = ({ title, value, extraInfo, max }) => {
   return (
     <Card>
       <CardContent>
-        <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
+        <Typography
+          sx={{
+            fontSize: 12,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            minHeight: '2.2em',
+            lineHeight: 1.1,
+          }}
+          color="text.secondary"
+          gutterBottom
+        >
           {title}
         </Typography>
         <Typography
-          variant="h5"
           component="div"
           sx={{
-            ...(max && { color: 'secondary.main' }),
+            fontFamily: '"IBM Plex Mono", monospace',
+            fontSize: '1.5rem',
+            fontWeight: 600,
+            color: max ? 'secondary.main' : 'text.primary',
           }}
         >
           {value}
 
           {extraInfo && (
-            <Typography sx={{ ml: 1.5 }} color="text.secondary" component="span">
+            <Typography
+              sx={{ ml: 1.5, fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.8rem' }}
+              color="text.secondary"
+              component="span"
+            >
               {extraInfo}
             </Typography>
           )}
@@ -117,7 +133,7 @@ export const StatsModule: FC = () => {
       </Stack>
 
       <Divider sx={{ mt: 1, mb: 1 }}>
-        <ScheduleIcon color="secondary" />
+        <HistoryIcon color="secondary" />
       </Divider>
 
       <Stack spacing={1}>
