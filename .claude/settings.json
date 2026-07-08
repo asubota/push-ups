@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node hooks/eslint.js",
+            "timeout": 40,
+            "statusMessage": "Linting..."
+          },
+          {
+            "type": "command",
+            "command": "node hooks/prettier.js",
+            "statusMessage": "Formatting..."
+          },
+          {
+            "type": "command",
+            "command": "node hooks/tsc.js",
+            "timeout": 40,
+            "statusMessage": "Type checking..."
+          }
+        ]
+      }
+    ]
+  }
+}
