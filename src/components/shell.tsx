@@ -18,7 +18,7 @@ import { Section } from '../types'
 
 interface ShellProps {
   children: ReactNode
-  onChange(section: Section): void
+  onChange: (section: Section) => void
 }
 
 export const Shell: FC<ShellProps> = ({ children, onChange }) => {

@@ -35,7 +35,7 @@ export const TrackModule: FC = () => {
         flexDirection: 'column',
       }}
     >
-      <Typography variant="h4" component="div" textAlign="center">
+      <Typography variant="h4" component="div" sx={{ textAlign: 'center' }}>
         Today
         <Divider sx={{ borderColor: 'secondary.main' }} />
         {today}
@@ -58,7 +58,7 @@ export const TrackModule: FC = () => {
         {value}
       </Button>
 
-      <Stack direction="row" gap={4}>
+      <Stack direction="row" sx={{ gap: 4 }}>
         <IconButton color="secondary" sx={{ fontSize: '60px' }} onClick={() => setValue((v) => v - 1)}>
           <RemoveCircleIcon fontSize="inherit" />
         </IconButton>
