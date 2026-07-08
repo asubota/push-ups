@@ -1,4 +1,4 @@
-export type Section = 'track' | 'stats' | 'calendar'
+export type Section = 'track' | 'stats'
 
 export interface TrackItem {
   value: number
